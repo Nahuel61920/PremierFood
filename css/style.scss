@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600&display=swap');
+
+*{
+   font-family: 'Raleway', sans-serif;
+   margin: 0; padding: 0;
+   box-sizing: border-box;
+   text-decoration: none;
+   outline: none; border: none;
+   text-transform: capitalize;
+   transition: all .4s linear;
+}
+
+$blue: #2087cc;
+$white: #fff;
+$black: #000;
+$light-color: #aaa;
+$border: .2rem solid #2087cc;
+
+@mixin  title-text($titleSize) {
+   font-size: $titleSize;
+   text-transform: uppercase;
+   color: $white;
+}
+
+@mixin  grap-text($grapSize) {
+   font-size: $grapSize;
+   line-height: 2;
+   color: $light-color;
+}
+
+@mixin grid($val) {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+   gap: 2rem;
+}
+
+html {
+   font-size: 62.5%;
+   scroll-behavior: smooth;
+   scroll-padding-top: 8rem;
+   overflow-x: hidden;
+
+   &::-webkit-scrollbar{
+      width: 1rem;
+   }
+
+   &::-webkit-scrollbar-track{
+      background: transparent;
+   }
+
+   &::-webkit-scrollbar-thumb{
+      background: $blue;
+      border-radius: 5rem;
+   }
+}
+
+body{
+   background: url(../images/bg.jpg);
+   background-attachment: fixed;
+   background-position: center;
+   overflow-x: hidden;
+   background-size: cover;
+   
+}
+
+section{
+   padding: 3rem 9%;
+}
+
+.heading{
+   text-align: center;
+   margin-bottom: 3rem;
+   width: 100%;
+
+   h3{
+      @include title-text(3rem);
+      margin-top: 1rem;
+   }
+
+   
+   
+}
+.btn{
+   display: inline-block;
+   margin-top: 1rem;
+   cursor: pointer;
+   color: $white;
+   border: $border;
+   background: no-repeat;
+   font-size: 1.7rem;
+   padding: 1rem 3rem;
+
+   &:hover{
+      color: $black;
+      background: $white;
+      border: .2rem solid rgba(238, 238, 238, 0.76);
+   }
+}
+
+.sitio-header {
+   position: fixed;
+   top: 0; left: 0; right: 0;
+   z-index: 1000;
+   background: $black;
+   padding: 3rem 9%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+
+   .icono {
+      font-size: 2.5rem;
+      cursor: pointer;
+      color: $white;
+
+      &:hover{
+         color: $blue;
+      }
+   }
+
+   #menu-btn{
+      display: none;
+   }
+
+   .navbar{
+
+      a{
+         color: $white;
+         font-size: 2rem;
+         margin: 0 2rem;
+
+         &:hover{
+            text-decoration: underline;
+            text-underline-offset: 1rem;
+            color: $blue;
+         }
+      }
+
+      .espacio{
+         display: inline-block;
+         width: 16rem;
+      }
+   }
+
+   .logo{
+      position: absolute;
+      top: 4rem; left: 44%; 
+      transform: translateY(-50%);
+   
+      img{
+         width: 15rem;
+      }
+   }
+
+   .busqueda-form{
+      height: 7rem;
+      padding: 0 2rem;
+      border-top: $border;
+      display: flex;
+      align-items: center;
+      background: $black;
+      position: absolute;
+      top: 99%; left: 0; right: 0;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+      &.active{
+         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+   
+      input{
+         width: 100%;
+         background: none;
+         text-transform: none;
+         font-size: 1.6rem;
+         color: $white;
+      }
+   
+   }
+   
+   .fa-times{
+      transform: rotate(180deg);
+   }
+}
+
+.home{
+   margin-top: 7rem;
+   background: url(../images/home-bg.pn) no-repeat;
+   background-size: contain;
+   background-position: center;
+
+   .contenido{
+      max-width: 70rem;
+      text-align: center;
+      margin: 0 auto;
+
+      img{
+         width: 100%;
+      }
+
+      h3{
+         @include title-text(4rem)
+      }
+
+      p{
+         @include grap-text(1.7rem);
+         padding: 2rem 0;
+      }
+   }
+}
+
+.servicio{
+   @include grid(31rem);
+
+   .caja{
+      text-align: center;
+      padding: 2rem;
+
+      i{
+         height: 7rem;
+         width: 7rem;
+         line-height: 7rem;
+         font-size: 2rem;
+         color: $black;
+         background: $blue;
+         margin-bottom: 1rem;
+         border-radius: 50%;
+      }
+
+      h3 {
+         padding: 1rem 0;
+         @include title-text(2rem);
+      }
+
+      p{
+         @include grap-text(1.5rem);
+      }
+   }
+}
+
+.menu{
+   .caja-container{
+      @include grid(31rem);
+
+      .cajas{
+         text-align: center;
+
+         &:hover img{
+            transform: translateY(1rem);
+         }
+
+         img{
+            height: 25rem;
+         }
+
+         .contenido{
+            padding: 1rem 0;
+
+            .estrellas{
+               margin-bottom: 2rem;
+
+               i{
+                  font-size: 1.7rem;
+                  color: $blue;
+               }
+            }
+
+            h3 {
+               @include title-text(2rem)
+            }
+
+            .precio {
+               @include grap-text(2rem)
+            }
+         }
+      }
+   }
+}
+
+.about{
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 3rem;
+
+   .imagen{
+      flex: 1 1 40rem;
+
+      img{
+         width: 100%;
+      }
+   }
+
+   .contenido{
+      flex: 1 1 40rem;
+
+      .titulo{
+         @include title-text(2.5rem);
+      }
+
+      p{
+         @include grap-text(1.1.5rem);
+         padding: 2rem 0;
+      }
+
+      .iconos{
+         display: flex;
+         flex-wrap: wrap;
+         gap: 1.5rem;
+
+         h3{
+            flex: 1 1 16rem;
+            @include title-text(1.2rem);
+            padding-bottom: 1rem;
+
+            i{
+               padding-right: .5rem;
+               color: $blue;
+            }
+         }
+      }
+   }
+}
+
+.opiniones {
+
+   .caja-container{
+      @include grid(31rem);
+
+      .caja{
+         text-align: center;
+         padding: 2rem;
+
+         img{
+            height: 10rem;
+            width: 10rem;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+         }
+
+         h3{
+            @include title-text(2rem);
+         }
+
+         p{
+            @include grap-text(1.5rem);
+            padding: 1rem 0;
+         }
+
+         .estrellas{
+            padding-top: .5rem;
+            i{
+               font-size: 1.7rem;
+               color: $blue;
+            }
+         }
+      }
+   }
+}
+
+.contacto {
+   .row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+
+      .mapa{
+         flex: 1 1 40rem;
+      }
+
+      .form{
+         flex: 1 1 40rem;
+
+         .iconos-container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+
+            .iconos {
+               flex: 1 1 17rem;
+               text-align: center;
+
+               i{
+                  height: 6rem;
+                  width: 6rem;
+                  line-height:6rem;
+                  border-radius: 50%;
+                  background: $blue;
+                  color: $black;
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+               }
+
+               h3{
+                  padding: 1rem 0;
+                  @include title-text(2rem);
+               }
+
+               p{
+                  @include grap-text(1.5rem)
+               }
+            }
+         }
+         form{
+            text-align: center;
+
+            .cajas{
+               padding: 1.2rem 1.4rem;
+               font-size: 1.6rem;
+               color: $white;
+               background: none;
+               border: $border;
+               text-transform: none;
+               width: 100%;
+               margin: .7rem 0;
+
+               &:focus {
+                  border-color: $blue;
+               }
+            }
+
+            textarea{
+               height: 15rem;
+               resize: none;
+            }
+         }
+      }
+   }
+}
+
+.blogs{
+   .caja-container{
+      @include grid(31rem);
+   
+      .caja{
+         position: relative;
+
+         &:hover .imagen{
+            img{
+               transform: scale(1.1);
+            }
+            .iconos{
+               transform: translateY(0);
+            }
+         }
+
+         .imagen{
+            height: 25rem;
+            overflow: hidden;
+            position: relative;
+
+            .iconos{
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               padding: 2rem;
+               background: $black;
+               position: absolute;
+               bottom:0; left: 0; right: 0;
+               z-index: 10;
+               transform: translateY(10rem);
+
+               a{
+                  font-size: 1.5rem;
+                  color: $white;
+
+                  i{
+                     padding-right: .5rem;
+                     color: $blue;
+                  }
+
+                  &:hover{
+                     color: $blue;
+                  }
+               }
+            }
+
+            img{
+               height: 100%;
+               width: 100%;
+               object-fit: cover;
+            }
+         }
+
+         .contenido{
+            text-align: center;
+            padding: 2rem;
+
+            h3{
+               @include title-text(2rem);
+            }
+
+            p{
+               @include grap-text(1.5rem);
+               padding: 1.5rem 0;
+            }
+         }
+      }
+   }
+}
+
+.sitio-footer{
+   text-align: center;
+   background: linear-gradient(transparent, $black);
+
+   .links{
+      a{
+         margin: 1rem;
+      }
+   }
+
+   .creditos{
+      @include grap-text(2rem);
+      padding-top: 2rem;
+
+      span{
+         color: $blue;
+      }
+   }
+}
+
+
+
+@media (max-width: 1200px) {
+   
+   html{
+      font-size:55%;
+   }
+
+   section{
+      padding: 3rem 2rem;
+   }
+}
+
+@media (max-width: 970px) {
+   
+   html{
+      font-size: 50%;
+   }
+   .sitio-header{
+      justify-content: flex-end;
+      gap: 2rem;
+      .logo{
+         transform: translateX(0);
+         left: 1rem;
+         top: 0;
+      }
+
+      #menu-btn{
+         display: inline-block;
+         
+      }
+
+      .navbar{
+         position: absolute;
+         top: 99%; left:0; right: 0;
+         background: $black;
+         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+      &.active{
+         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+         a{
+            display: block;
+            margin: 3rem 2rem;
+         }
+         .espacio{
+            display: none;
+         }
+      }
+   }
+}
+
+
+@media (max-width: 750px) {
+   .heading{
+      img{
+         width: 100%;
+      }
+   }
+   .home .contenido h3 {
+      font-size: 2.5rem;
+   }
+}
+@media (max-width: 450px) {
+   
+   html{
+      font-size: 50%;
+   }
+}
